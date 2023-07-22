@@ -2,7 +2,6 @@ import { getCommentList, postNewComment, setToken } from "./modules/api.js" // G
 import { secureReplace } from "./modules/sanitizeHtml.js" // Реплейсы тегов
 import { enableLoadingToNewComment, enableLoadingToStartApp } from "./modules/loadingFunctions.js" // Функции лоадинг-баров (отобразить/скрыть)
 import { renderCommentList } from "./modules/renderCommentList.js" // Отрисовка полученного списка комментов
-import { fullTime, rightDateFormat } from "./modules/editAndGetTimeFunctions.js" // Функция подправки времени и получения правильного формата времени/даты
 import { disableBtn } from "./modules/disableBtn.js" // Отключение/включение кнопки
 import { delay } from "./modules/delay.js" // Иммитация API для лайков(либо просто контролируемый дилэй)
 import { tryPostAgain } from "./modules/tryPostAgain.js" // Повторный POST при получении 500 статуса
