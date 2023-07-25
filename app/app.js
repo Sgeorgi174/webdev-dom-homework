@@ -2,13 +2,13 @@ import { getCommentList, postNewComment, setToken } from "./modules/api.js" // G
 import { secureReplace } from "./modules/sanitizeHtml.js" // Реплейсы тегов
 import { enableLoadingToNewComment, enableLoadingToStartApp } from "./modules/loadingFunctions.js" // Функции лоадинг-баров (отобразить/скрыть)
 import { renderCommentList } from "./modules/renderCommentList.js" // Отрисовка полученного списка комментов
-import { fullTime, rightDateFormat } from "./modules/editAndGetTimeFunctions.js" // Функция подправки времени и получения правильного формата времени/даты
 import { disableBtn } from "./modules/disableBtn.js" // Отключение/включение кнопки
 import { delay } from "./modules/delay.js" // Иммитация API для лайков(либо просто контролируемый дилэй)
 import { tryPostAgain } from "./modules/tryPostAgain.js" // Повторный POST при получении 500 статуса
 import { renderApp } from "./modules/renderApp.js"
 import { loginPageRender } from "./modules/loginPage.js"
 import { checkToken } from "./modules/checkToken.js"
+import { format } from "date-fns"
 
 // Переменные элементов
 export const nameInput = document.querySelector('#name-input')
@@ -43,7 +43,7 @@ export function getAndRenderCommentList() {
         const rightResponse = responseData.comments.map((comment) => {
             return {
                 userName: comment.author.name,
-                currDate: rightDateFormat(fullTime, comment.date),
+                currDate: format(new Date(comment.date), "yyyy-MM-dd hh.mm.ss"),
                 likes: comment.likes,
                 isLiked: comment.isLiked,
                 text: comment.text,
